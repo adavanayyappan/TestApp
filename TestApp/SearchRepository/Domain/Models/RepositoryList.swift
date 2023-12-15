@@ -6,5 +6,6 @@
 //
 
 struct RepositoryList: Codable {
+    let totalCount: Int
     let items: [Repository]
 }
