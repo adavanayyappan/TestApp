@@ -28,11 +28,12 @@ extension Endpoint {
 }
 
 extension Endpoint {
-    static func searchRepository(query: String) -> Self {
+    static func searchRepository(query: String, currentPage: Int) -> Self {
         return Endpoint(path: "/search/repositories",
                         queryItems: [
                             URLQueryItem(name: "q",
-                                         value: "\(query)")
+                                         value: "\(query)"),
+                            URLQueryItem(name: "page", value: "\(currentPage)")
                         ]
         )
     }

@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 protocol RepositoryService {
-    func searchRepository(query: String) -> AnyPublisher<RepositoryList, Error>
+    func searchRepository(query: String, currentPage: Int) -> AnyPublisher<RepositoryList, Error>
 }

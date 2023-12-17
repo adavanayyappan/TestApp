@@ -15,10 +15,9 @@ struct NetworkRepositoryService: RepositoryService {
         self.networkService = networkService
     }
     
-    func searchRepository(query: String) -> AnyPublisher<RepositoryList, Error> {
-        let endpoint = Endpoint.searchRepository(query: query)
+    func searchRepository(query: String, currentPage: Int) -> AnyPublisher<RepositoryList, Error> {
+        let endpoint = Endpoint.searchRepository(query: query, currentPage: currentPage)
         return networkService
             .get(type: RepositoryList.self, url: endpoint.url, header: nil)
     }
-
 }
