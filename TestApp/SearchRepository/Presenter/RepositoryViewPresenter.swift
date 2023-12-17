@@ -11,6 +11,7 @@ import Combine
 class RepositoryViewPresenter {
     private weak var view: RepositoryViewInterface?
     private let service: RepositoryService
+    var coordinator: RepositoryCoordinating?
     private var cancellables = Set<AnyCancellable>()
     
     init(service: RepositoryService) {
@@ -23,6 +24,10 @@ class RepositoryViewPresenter {
 }
 
 extension RepositoryViewPresenter: RepositoryViewHandler {
+    func selectRepository(_ repository: Repository) {
+        coordinator?.showRepositoryDetails(repository: repository)
+    }
+    
     func searchRepository(query: String, currentPage: Int) {
         view?.presentProgressStart()
         service.searchRepository(query: query, currentPage: currentPage)

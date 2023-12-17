@@ -37,4 +37,14 @@ extension Endpoint {
                         ]
         )
     }
+    
+    static func getRepositoryContributor(owner: String, project: String) -> Self {
+        return Endpoint(path: "/repos/\(owner)/\(project)/contributors",
+                        queryItems: [
+                            URLQueryItem(name: "anon",
+                                         value: "\(1)"),
+                            URLQueryItem(name: "per_page", value: "\(3)")
+                        ]
+        )
+    }
 }

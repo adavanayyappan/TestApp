@@ -11,4 +11,10 @@ struct Repository: Codable {
     let language: String?
     let createdAt: String?
     let stargazersCount: Int?
+    let owner : Owner?
+}
+
+struct Owner : Codable {
+    let login : String
+    let id: Int
 }

@@ -12,7 +12,9 @@ enum RepositoryFactory {
         let service: RepositoryService = NetworkRepositoryService()
         let presenter: RepositoryViewPresenter = RepositoryViewPresenter(service: service)
         let view = SearchViewController(presenter: presenter)
+        let coordinator = RepositoryCoordinator(viewController: view)
         presenter.attach(view: view)
+        presenter.coordinator = coordinator
         let navigationController = UINavigationController()
         navigationController.viewControllers = [view]
         return navigationController

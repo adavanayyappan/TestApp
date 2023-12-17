@@ -9,5 +9,5 @@ import Foundation
 
 protocol RepositoryViewHandler {
     func searchRepository(query: String, currentPage: Int)
-    
+    func selectRepository(_ repository: Repository)
 }
