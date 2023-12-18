@@ -52,12 +52,12 @@ class SearchViewController: UIViewController {
         backBarButtonItem.tintColor = .white
         return backBarButtonItem
     }()
-    private var searchWithLimits = true
+   
     private var isSearching = false
     private var searchQuery: String = ""
     private var displCells = 0
     private var currentSearchPage = 1
-    private var currentPopularPage = 1
+    
     private let presenter: RepositoryViewHandler
     private var repositoryItems = [Repository]()
     private var indexPath: IndexPath?

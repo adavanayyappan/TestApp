@@ -24,10 +24,17 @@ class RepositoryViewPresenter {
 }
 
 extension RepositoryViewPresenter: RepositoryViewHandler {
+    /// Select Repository router method
+    /// - Parameter repository: selected repository
     func selectRepository(_ repository: Repository) {
         coordinator?.showRepositoryDetails(repository: repository)
     }
     
+    ///  Search Repository API Method
+    /// - Parameters:
+    ///   - query: search query
+    ///   - currentPage:  page index position
+    ///   - completionHandler:  completion block
     func searchRepository(query: String, currentPage: Int, completionHandler : @escaping ()->Void) {
         view?.presentProgressStart()
         service.searchRepository(query: query, currentPage: currentPage)
