@@ -26,7 +26,7 @@ class RepositoryDetailsViewPresenter {
 }
 
 extension RepositoryDetailsViewPresenter: RepositoryDetailsViewHandler {
-    func getRepositoryContributor() {
+    func getRepositoryContributor(completionHandler: @escaping ()->Void) {
         view?.presentRepositoryViewData(repositoryData: repository)
         view?.presentProgressStart()
         let owner = repository.owner?.login ?? ""
@@ -39,12 +39,14 @@ extension RepositoryDetailsViewPresenter: RepositoryDetailsViewHandler {
                     print(error)
                     self?.view?.presentProgressFinish()
                     self?.view?.presentErrorViewData(error: error)
+                    completionHandler()
                 case .finished: break
                 }
             } receiveValue: { [weak self] contributorsList in
                 self?.view?.presentProgressFinish()
                 self?.view?.presentRepositoryContributorsViewData(contributorData: contributorsList)
                 print("Result count = \(contributorsList.count)")
+                completionHandler()
             }
             .store(in: &cancellables)
     }

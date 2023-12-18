@@ -8,5 +8,5 @@
 import Foundation
 
 protocol RepositoryDetailsViewHandler {
-    func getRepositoryContributor()
+    func getRepositoryContributor(completionHandler: @escaping ()->Void)
 }

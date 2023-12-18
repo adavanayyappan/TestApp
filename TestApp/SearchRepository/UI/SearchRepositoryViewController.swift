@@ -150,7 +150,7 @@ extension SearchViewController: UISearchControllerDelegate, UISearchBarDelegate 
             self.tableView.reloadData()
             isSearching = true
             indexPath = IndexPath(row: 0, section: 0)
-            presenter.searchRepository(query: searchQuery, currentPage: currentSearchPage)
+            presenter.searchRepository(query: searchQuery, currentPage: currentSearchPage) {}
         } else {
             isSearching = false
             nothingFoundPlaceholder.removeFromSuperview()
@@ -196,7 +196,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == repositoryItems.count - 1 {
                 currentSearchPage += 1
                 self.indexPath = indexPath
-                presenter.searchRepository(query: searchQuery, currentPage: currentSearchPage)
+                presenter.searchRepository(query: searchQuery, currentPage: currentSearchPage) {}
             }
         }
     }

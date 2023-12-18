@@ -28,7 +28,7 @@ extension RepositoryViewPresenter: RepositoryViewHandler {
         coordinator?.showRepositoryDetails(repository: repository)
     }
     
-    func searchRepository(query: String, currentPage: Int) {
+    func searchRepository(query: String, currentPage: Int, completionHandler : @escaping ()->Void) {
         view?.presentProgressStart()
         service.searchRepository(query: query, currentPage: currentPage)
             .receive(on: DispatchQueue.main)
@@ -38,12 +38,14 @@ extension RepositoryViewPresenter: RepositoryViewHandler {
                     print(error)
                     self?.view?.presentProgressFinish()
                     self?.view?.presentErrorViewData(error: error)
+                    completionHandler()
                 case .finished: break
                 }
             } receiveValue: { [weak self] repo in
                 self?.view?.presentProgressFinish()
                 self?.view?.presentRepositoryViewData(viewData: repo)
                 print("Result count = \(repo.items.count)")
+                completionHandler()
             }
             .store(in: &cancellables)
     }

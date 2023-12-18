@@ -8,6 +8,6 @@
 import Foundation
 
 protocol RepositoryViewHandler {
-    func searchRepository(query: String, currentPage: Int)
+    func searchRepository(query: String, currentPage: Int, completionHandler: @escaping ()->Void)
     func selectRepository(_ repository: Repository)
 }

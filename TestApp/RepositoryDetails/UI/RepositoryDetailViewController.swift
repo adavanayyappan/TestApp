@@ -66,7 +66,7 @@ class RepositoryDetailViewController: UIViewController {
         
         repoTableView.delegate = self
         repoTableView.dataSource = self
-        presenter.getRepositoryContributor()
+        presenter.getRepositoryContributor() {}
     }
     
     override func viewWillAppear(_ animated: Bool) {

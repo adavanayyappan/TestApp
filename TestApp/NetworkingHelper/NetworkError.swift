@@ -16,7 +16,7 @@ enum NetworkError: Error {
         case .invalidRequest: return "Invalid request"
         case .invalidResponse: return "Invalid reponse"
         case .dataLoadingError: return "Data loading failed"
-        case .jsonDecodingError: return "JSON decoding failed."
+        case .jsonDecodingError: return "JSON decoding failed"
         }
     }
 }
